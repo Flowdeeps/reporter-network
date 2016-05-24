@@ -4,12 +4,24 @@ module.exports = function (grunt) {
     // load all grunt tasks
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-browser-sync');
 
     grunt.initConfig({
         watch: {
             // if any .less file changes in directory "public/css/" run the "less"-task.
             files: "**/*.less",
             tasks: ["less"]
+        },
+        // browserSync
+        browserSync: {
+            bsFiles: {
+                src : 'assets/css/*.css'
+            },
+            options: {
+                server: {
+                    baseDir: "./"
+                }
+            }
         },
         // "less"-task configuration
         less: {
@@ -18,15 +30,15 @@ module.exports = function (grunt) {
                 options: {
                     // Specifies directories to scan for @import directives when parsing.
                     // Default value is the directory of the source, which is probably what you want.
-                    paths: ["css/"],
+                    paths: ["assets/less/"],
                 },
                 files: {
                     // compilation.css  :  source.less
-                    "css/main.css": "css/main.less"
+                    "assets/css/main.css": "assets/less/main.less"
                 }
             },
         },
     });
      // the default task (running "grunt" in console) is "watch"
-     grunt.registerTask('default', ['watch']);
+     grunt.registerTask('default', ['browserSync','watch']);
 };
