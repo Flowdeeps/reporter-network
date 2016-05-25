@@ -24,16 +24,6 @@ This is currently just best guess as I dig my way into the problem and try and w
 
 Python
 
-	Virtualenv - for python libs
-
-	Flask - for serving
-
-	Eve - for API creation
-
-	Pymongo
-
-Redis
-
-Elasticsearch
-
 Angular2
+
+MySQL
